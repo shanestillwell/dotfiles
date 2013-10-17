@@ -1,0 +1,5 @@
+[user]
+	name = Shane A. Stillwell
+	email = shanestillwell@gmail.com
+[core]
+	excludesfile = /Users/shane/.gitignore
