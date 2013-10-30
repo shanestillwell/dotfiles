@@ -1,0 +1,22 @@
+{
+    "predef": [ 
+        "describe",
+        "it",
+        "before",
+        "beforeEach",
+        "require",
+        "exports",
+        "console",
+        "module",
+        "process"
+            ],
+        "undef": true,
+        "curly": false,
+        "sub": true,
+        "node":true,
+        "newcap": false,
+        "proto": true,
+        "laxcomma": true
+
+}
+
