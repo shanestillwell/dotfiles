@@ -46,6 +46,31 @@ inoremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
 
+
+"autocomplete Parenthesis
+"When you type an open brace, this will automatically
+"insert a closing brace on the same line, after the cursor.
+"If you quickly hit Enter after the open brace, (to begin
+"a code block), the closing brace will be inserted on the
+"line below the cursor. If you quickly press the open brace
+"key again after the open brace, Vim won't insert anything extra,
+" you'll just get a single open brace. Finally, if you quickly
+"type an open and close brace, Vim will not do anything special.
+inoremap {      {}<Left>
+inoremap {<CR>  {<CR>}<Esc>O
+inoremap {{     {
+inoremap {}     {}
+
+inoremap (      ()<Left>
+inoremap (<CR>  (<CR>)<Esc>O
+inoremap ((     (
+inoremap ()     ()
+
+inoremap [      []<Left>
+inoremap [<CR>  [<CR>]<Esc>O
+inoremap [[     [
+inoremap []     []
+
 "Relative numbers in the gutter
 set relativenumber
 
