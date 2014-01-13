@@ -100,7 +100,6 @@ set ts=4
 set sts=4
 set et
 set sw=4
-set textwidth=79
 
 " File types
 
@@ -147,6 +146,20 @@ autocmd FileType javascript set sts=2
 autocmd FileType javascript set textwidth=79
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
+
+" Code Folding
+"set foldmethod=syntax
+"set foldlevelstart=0
+
+"let javaScript_fold=0         " JavaScript
+"let perl_fold=1               " Perl
+"let php_folding=1             " PHP
+"let r_syntax_folding=1        " R
+"let ruby_fold=1               " Ruby
+"let sh_fold_enabled=1         " sh
+"let vimsyn_folding='af'       " Vim script
+"let xml_syntax_folding=1      " XML
+
 " Mark down file type
 au BufRead,BufNewFile *.md set filetype=markdown
 
@@ -177,6 +190,9 @@ map <F2> :NERDTreeToggle<CR>
 " Number gutter
 Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 map <F3> :call NumberToggle()<CR>
+
+" Surround 
+Bundle 'tpope/vim-surround'
 
 " Tagbar
 Bundle 'majutsushi/tagbar'
@@ -210,12 +226,18 @@ let g:airline_right_sep = ''
 let g:airline_branch_prefix = ''
 set laststatus=2 " enable airline with only one screen
 
+" Javascript plugins
+Bundle "pangloss/vim-javascript"
+
 
 " Comments ,cc
 Bundle 'scrooloose/nerdcommenter'
 
 " JSON formatting :Jacinto
 Bundle 'alfredodeza/jacinto.vim'
+
+" Hightlight unwanted spaces
+Bundle 'bronson/vim-trailing-whitespace'
 
 " My theme
 Bundle 'tpope/vim-vividchalk'
