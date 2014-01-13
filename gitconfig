@@ -3,3 +3,5 @@
 	email = shanestillwell@gmail.com
 [core]
 	excludesfile = /Users/shane/.gitignore
+[push]
+	default = simple
