@@ -10,3 +10,9 @@ alias gca='git commit -a '
 alias gs='git status'
 
 export ANDROID_HOME=/usr/local/opt/android-sdk
+
+# Grunt Autocomplete
+eval "$(grunt --completion=bash)"
+
+# Look in local node_modules (never need to install global again)
+export PATH="$PATH:./node_modules/.bin"
