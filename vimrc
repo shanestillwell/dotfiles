@@ -3,7 +3,7 @@ set nocompatible               " be iMproved
 " change the mapleader from \ to ,
 let mapleader=","
 
-" Mappings 
+" Mappings
 inoremap jj <ESC>
 
 " Quickly edit/reload the vimrc file
@@ -81,6 +81,7 @@ set smartcase
 set incsearch
 set showmatch
 set hlsearch
+set wrapscan
 
 "Textmate like xhidden charaters
 set nolist
@@ -111,6 +112,18 @@ augroup trailing
     au InsertLeave * :set listchars+=trail:␣
 augroup END
 
+" JS folding
+augroup jsfolding
+  autocmd!
+  autocmd FileType javascript setlocal foldenable|setlocal foldmethod=syntax
+augroup END
+
+" Basically open files unfolded
+set foldlevelstart=99
+
+" Use space to expand/contract folds
+nnoremap <Space> za
+
 " HTML (tab width 2 chr, no wrapping
 autocmd FileType markdown set sw=2
 autocmd FileType markdown set ts=2
@@ -127,8 +140,7 @@ autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 
 " Python (tab width 4 chr, wrap at 79th char)
 autocmd FileType python set sw=4
-autocmd FileType python set ts=4
-autocmd FileType python set sts=4
+autocmd FileType python set expandtab!
 autocmd FileType python set textwidth=79
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 
@@ -150,7 +162,11 @@ autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 " Code Folding
 "set foldmethod=syntax
 "set foldlevelstart=0
-
+" Code Folding
+" syntax region foldBraces start=/{/ end=/}/ transparent fold keepend extend
+" setlocal foldmethod=syntax
+" setlocal foldlevel=99
+" let javaScript_fold=1
 "let javaScript_fold=0         " JavaScript
 "let perl_fold=1               " Perl
 "let php_folding=1             " PHP
@@ -163,6 +179,9 @@ autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 " Mark down file type
 au BufRead,BufNewFile *.md set filetype=markdown
 
+" cshtml files as HTML
+au BufRead,BufNewFile *.cshtml set filetype=html
+
 " Vundle
 filetype off                   " required!
 
@@ -170,7 +189,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " let Vundle manage Vundle
-" required! 
+" required!
 Bundle 'gmarik/vundle'
 
 " My Bundles here:
@@ -180,7 +199,7 @@ Bundle 'gmarik/vundle'
 " Git
 Bundle 'tpope/vim-fugitive'
 
-" HTML 
+" HTML
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 " NERDTree
@@ -191,7 +210,7 @@ map <F2> :NERDTreeToggle<CR>
 Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 map <F3> :call NumberToggle()<CR>
 
-" Surround 
+" Surround
 Bundle 'tpope/vim-surround'
 
 " Tagbar
@@ -228,7 +247,9 @@ set laststatus=2 " enable airline with only one screen
 
 " Javascript plugins
 Bundle "pangloss/vim-javascript"
+let g:javascript_conceal = 0
 
+Bundle "jelera/vim-javascript-syntax"
 
 " Comments ,cc
 Bundle 'scrooloose/nerdcommenter'
@@ -238,6 +259,20 @@ Bundle 'alfredodeza/jacinto.vim'
 
 " Hightlight unwanted spaces
 Bundle 'bronson/vim-trailing-whitespace'
+
+" Tern for Javascript
+Bundle 'marijnh/tern_for_vim'
+
+" Match HTML Tags
+Bundle 'valloric/MatchTagAlways'
+
+" Google I'm feeling lucky
+Bundle 'sgharms/GIFL'
+let g:LuckyOutputFormat='markdown'
+
+" Dash.app 
+Bundle 'rizzatti/funcoo.vim'
+Bundle 'rizzatti/dash.vim'
 
 " My theme
 Bundle 'tpope/vim-vividchalk'
