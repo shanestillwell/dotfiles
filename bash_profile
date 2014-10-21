@@ -16,3 +16,5 @@ eval "$(grunt --completion=bash)"
 
 # Look in local node_modules (never need to install global again)
 export PATH="$PATH:./node_modules/.bin"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
