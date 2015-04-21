@@ -3,6 +3,7 @@
 	email = shanestillwell@gmail.com
 [core]
 	excludesfile = /Users/shane/.gitignore
+	editor = vim
 [push]
 	default = simple
 [filter "media"]

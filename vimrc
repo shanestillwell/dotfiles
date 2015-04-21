@@ -1,5 +1,8 @@
 set nocompatible               " be iMproved
 
+set exrc " Per directory .vimrc file
+set secure " Not sure
+
 " change the mapleader from \ to ,
 let mapleader=","
 
@@ -32,7 +35,7 @@ set wmh=0
 set clipboard=unnamed
 
 " Open up current file in chrome
-nmap <silent> <leader>ch :exec 'silent !open -a "Google Chrome" % &'
+nmap <silent> <leader>ch :exec 'silent !open -a "/Applications/Google Chrome.app" % &'
 
 " Disable arrow keys
 nnoremap <up> <nop>
@@ -130,6 +133,7 @@ autocmd FileType markdown set ts=2
 autocmd FileType markdown set sts=2
 autocmd FileType markdown set textwidth=0
 autocmd FileType markdown set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType markdown setlocal spell
 
 " HTML (tab width 2 chr, no wrapping)
 autocmd FileType html set sw=2
@@ -234,15 +238,14 @@ nmap <silent> <leader>t: :Tabularize /:<CR>
 
 " CtrlP for file finding
 Bundle 'kien/ctrlp.vim'
+"let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+let g:ctrlp_custom_ignore = '\v[\/](bower_components|node_modules|target|dist|build)|(\.(swp|ico|git|svn))$'
 
 " For refacotring
 Bundle 'terryma/vim-multiple-cursors'
 
 " Status line
 Bundle 'bling/vim-airline'
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-let g:airline_branch_prefix = ''
 set laststatus=2 " enable airline with only one screen
 
 " Javascript plugins
@@ -260,17 +263,16 @@ Bundle 'alfredodeza/jacinto.vim'
 " Hightlight unwanted spaces
 Bundle 'bronson/vim-trailing-whitespace'
 
-" Tern for Javascript
-Bundle 'marijnh/tern_for_vim'
-
 " Match HTML Tags
 Bundle 'valloric/MatchTagAlways'
 
-" Google I'm feeling lucky
-Bundle 'sgharms/GIFL'
-let g:LuckyOutputFormat='markdown'
+" JSX
+Bundle 'mxw/vim-jsx'
 
-" Dash.app 
+" Search Tasks (e.g. FIXME, TODO, XXX)
+Bundle 'gilsondev/searchtasks.vim'
+
+" Dash.app
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
 
