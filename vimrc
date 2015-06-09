@@ -180,6 +180,8 @@ autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 "let vimsyn_folding='af'       " Vim script
 "let xml_syntax_folding=1      " XML
 
+
+
 " Mark down file type
 au BufRead,BufNewFile *.md set filetype=markdown
 
@@ -189,110 +191,134 @@ au BufRead,BufNewFile *.cshtml set filetype=html
 " Vundle
 filetype off                   " required!
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " let Vundle manage Vundle
 " required!
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
-" My Bundles here:
+" My Plugins here:
 "
 " original repos on github
 "
 " Git
-Bundle 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
+let g:fugitive_github_domains = ['https://github.ua.com']
 
 " HTML
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 " NERDTree
-Bundle 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 map <F2> :NERDTreeToggle<CR>
 
 " Number gutter
-Bundle 'jeffkreeftmeijer/vim-numbertoggle'
+Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 map <F3> :call NumberToggle()<CR>
 
 " Surround
-Bundle 'tpope/vim-surround'
+Plugin 'tpope/vim-surround'
 
 " Tagbar
-Bundle 'majutsushi/tagbar'
+Plugin 'majutsushi/tagbar'
 nmap <F8> :TagbarToggle<CR>
 
 " Ack
-Bundle 'mileszs/ack.vim'
+Plugin 'mileszs/ack.vim'
 
 " Syntax checking
-Bundle 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 let g:syntastic_check_on_open=1
 let g:syntastic_mode_map={ 'mode': 'active',
                      \ 'active_filetypes': [],
                      \ 'passive_filetypes': ['markdown'] }
 
 " Tabular
-Bundle 'godlygeek/tabular'
+Plugin 'godlygeek/tabular'
 nmap <silent> <leader>t= :Tabularize /=<CR>
 nmap <silent> <leader>t: :Tabularize /:<CR>
 
 " CtrlP for file finding
-Bundle 'kien/ctrlp.vim'
+Plugin 'kien/ctrlp.vim'
 "let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 let g:ctrlp_custom_ignore = '\v[\/](bower_components|node_modules|target|dist|build)|(\.(swp|ico|git|svn))$'
 
 " For refacotring
-Bundle 'terryma/vim-multiple-cursors'
+Plugin 'terryma/vim-multiple-cursors'
 
 " Status line
-Bundle 'bling/vim-airline'
+Plugin 'bling/vim-airline'
 set laststatus=2 " enable airline with only one screen
 
 " Javascript plugins
-Bundle "pangloss/vim-javascript"
+Plugin 'pangloss/vim-javascript'
 let g:javascript_conceal = 0
 
-Bundle "jelera/vim-javascript-syntax"
+Plugin 'jelera/vim-javascript-syntax'
 
 " Comments ,cc
-Bundle 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdcommenter'
 
 " JSON formatting :Jacinto
-Bundle 'alfredodeza/jacinto.vim'
+Plugin 'alfredodeza/jacinto.vim'
 
 " Hightlight unwanted spaces
-Bundle 'bronson/vim-trailing-whitespace'
+Plugin 'bronson/vim-trailing-whitespace'
 
 " Match HTML Tags
-Bundle 'valloric/MatchTagAlways'
+Plugin 'valloric/MatchTagAlways'
 
 " JSX
-Bundle 'mxw/vim-jsx'
+Plugin 'mxw/vim-jsx'
 
-" Search Tasks (e.g. FIXME, TODO, XXX)
-Bundle 'gilsondev/searchtasks.vim'
+" YAML syntax
+Plugin 'chase/vim-ansible-yaml'
+au BufNewFile,BufRead *.yaml set filetype=ansible
 
-" Dash.app
-Bundle 'rizzatti/funcoo.vim'
-Bundle 'rizzatti/dash.vim'
+" YouCompleteMe
+Plugin 'Valloric/YouCompleteMe'
+let g:ycm_use_ultisnips_completer = 1
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+
+" SuperTab
+Plugin 'ervandew/supertab'
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" Snippets
+Plugin 'SirVer/ultisnips'
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsListSnippets="<c-tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+" Snippets are separated from the engine. Add this if you want them:
+Plugin 'honza/vim-snippets'
 
 " My theme
-Bundle 'tpope/vim-vividchalk'
-:colorscheme vividchalk
+Plugin 'tpope/vim-vividchalk'
 
 " vim-scripts repos
 " non github repos
 " git repos on your local machine (ie. when working on your own plugin)
-" Bundle 'file:///Users/gmarik/path/to/plugin'
+" Plugin 'file:///Users/gmarik/path/to/plugin'
 " ...
-
+call vundle#end()             " required!
 filetype plugin indent on     " required!
 "
 " Brief help
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+" :PluginList          - list configured bundles
+" :PluginInstall(!)    - install(update) bundles
+" :PluginSearch(!) foo - search(or refresh cache first) for foo
+" :PluginClean(!)      - confirm(or auto-approve) removal of unused bundles
 "
 " see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Bundle command are not allowed..
+" NOTE: comments after Plugin command are not allowed..
+
+:colorscheme vividchalk

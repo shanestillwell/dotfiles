@@ -1,4 +1,4 @@
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/sbin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/sbin:./node_modules/.bin"
 
 # Add personal sbin for my stuff
 export PATH="$PATH:$HOME/.sbin"
@@ -13,19 +13,19 @@ source ~/.git-completion.bash
 # Aliases
 alias gca='git commit -a '
 alias gs='git status'
-
 alias nr='npm run'
-alias sshane='ssh shane@10.0.1.13'
-
-export ANDROID_HOME=/usr/local/opt/android-sdk
-
-# Grunt Autocomplete
-eval "$(grunt --completion=bash)"
-
-# Look in local node_modules (never need to install global again)
-export PATH="$PATH:./node_modules/.bin"
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+alias sshane='ssh shane@172.16.1.2'
 
 # TT Under Armour B2B
 export B2B_SQL_USER="shane"; export B2B_SQL_PASS="denali12"; export B2B_SQL_URL="jdbc:postgresql://localhost:5432/b2b";
+export CPATH=/usr/local/include:$CPATH
+export LIBRARY_PATH=/usr/local/lib:$LIBRARY_PATH
+
+export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin/";
+
+#
+# Docker Settings
+DOCKER_OPTS="-H unix:///var/run/docker.sock"
+if [ -f ~/.boot2dockercfg ]; then
+    source ~/.boot2dockercfg
+fi
