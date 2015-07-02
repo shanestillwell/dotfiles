@@ -11,10 +11,7 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 source ~/.git-completion.bash
 
 # Aliases
-alias gca='git commit -a '
-alias gs='git status'
-alias nr='npm run'
-alias sshane='ssh shane@172.16.1.2'
+source ~/.dotfiles/bash_aliases;
 
 # TT Under Armour B2B
 export B2B_SQL_USER="shane"; export B2B_SQL_PASS="denali12"; export B2B_SQL_URL="jdbc:postgresql://localhost:5432/b2b";
