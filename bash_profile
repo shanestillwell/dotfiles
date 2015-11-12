@@ -18,11 +18,12 @@ export B2B_SQL_USER="shane"; export B2B_SQL_PASS="denali12"; export B2B_SQL_URL=
 export CPATH=/usr/local/include:$CPATH
 export LIBRARY_PATH=/usr/local/lib:$LIBRARY_PATH
 
-export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin/";
+export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin";
 
 #
 # Docker Settings
-DOCKER_OPTS="-H unix:///var/run/docker.sock"
-if [ -f ~/.boot2dockercfg ]; then
-    source ~/.boot2dockercfg
-fi
+#DOCKER_OPTS="-H unix:///var/run/docker.sock"
+#if [ -f ~/.boot2dockercfg ]; then
+    #source ~/.boot2dockercfg
+#fi
+eval "$(docker-machine env ua)"

@@ -22,6 +22,9 @@ nmap <silent> <leader>wl <C-W>l
 " No swap files please
 set noswapfile
 
+" Font
+set gfn=Hack\ Regular:h14
+
 " Hide buffers instead of deleting them
 set hidden
 
@@ -206,9 +209,6 @@ Plugin 'gmarik/vundle'
 Plugin 'tpope/vim-fugitive'
 let g:fugitive_github_domains = ['https://github.ua.com']
 
-" HTML
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-
 " NERDTree
 Plugin 'scrooloose/nerdtree'
 map <F2> :NERDTreeToggle<CR>
@@ -216,13 +216,6 @@ map <F2> :NERDTreeToggle<CR>
 " Number gutter
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 map <F3> :call NumberToggle()<CR>
-
-" Surround
-Plugin 'tpope/vim-surround'
-
-" Tagbar
-Plugin 'majutsushi/tagbar'
-nmap <F8> :TagbarToggle<CR>
 
 " Ack
 Plugin 'mileszs/ack.vim'
@@ -243,6 +236,9 @@ nmap <silent> <leader>t: :Tabularize /:<CR>
 Plugin 'kien/ctrlp.vim'
 "let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 let g:ctrlp_custom_ignore = '\v[\/](bower_components|node_modules|target|dist|build)|(\.(swp|ico|git|svn))$'
+let g:ctrlp_prompt_mappings = {
+\ 'PrtClearCache()':      ['<c-r>'],
+\ }
 
 " For refacotring
 Plugin 'terryma/vim-multiple-cursors'
@@ -277,10 +273,10 @@ Plugin 'chase/vim-ansible-yaml'
 au BufNewFile,BufRead *.yaml set filetype=ansible
 
 " YouCompleteMe
-Plugin 'Valloric/YouCompleteMe'
-let g:ycm_use_ultisnips_completer = 1
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+"Plugin 'Valloric/YouCompleteMe'
+"let g:ycm_use_ultisnips_completer = 1
+"let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+"let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 
 " SuperTab
 Plugin 'ervandew/supertab'
