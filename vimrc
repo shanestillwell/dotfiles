@@ -119,13 +119,13 @@ augroup trailing
 augroup END
 
 " JS folding
-augroup jsfolding
-  autocmd!
-  autocmd FileType javascript setlocal foldenable|setlocal foldmethod=syntax
-augroup END
+"augroup jsfolding
+  "autocmd!
+  "autocmd FileType javascript setlocal foldenable|setlocal foldmethod=syntax
+"augroup END
 
 " Basically open files unfolded
-set foldlevelstart=99
+"set foldlevelstart=99
 
 " Use space to expand/contract folds
 nnoremap <Space> za
@@ -244,7 +244,9 @@ let g:ctrlp_prompt_mappings = {
 Plugin 'terryma/vim-multiple-cursors'
 
 " Status line
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+let g:airline_powerline_fonts = 1
 set laststatus=2 " enable airline with only one screen
 
 " Javascript plugins
@@ -299,6 +301,8 @@ Plugin 'honza/vim-snippets'
 
 " My theme
 Plugin 'tpope/vim-vividchalk'
+Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
+Plugin 'altercation/vim-colors-solarized'
 
 " vim-scripts repos
 " non github repos
@@ -317,4 +321,6 @@ filetype plugin indent on     " required!
 " see :h vundle for more details or wiki for FAQ
 " NOTE: comments after Plugin command are not allowed..
 
-:colorscheme vividchalk
+
+
+:colorscheme dracula

@@ -1,11 +1,36 @@
 [user]
-	name = Shane A. Stillwell
-	email = shanestillwell@gmail.com
+	name = "Shane A. Stillwell"
+	email = "(none)"
 [core]
 	excludesfile = /Users/shane/.gitignore
 	editor = vim
 [push]
 	default = simple
+[alias]
+; http://durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
+	alias = config --get-regexp alias
+	wow = log --all --graph --decorate --oneline --simplify-by-decoration
+	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+	fl = log -u
+	f = "!git ls-files | grep -i"
+	gr = grep -Ii
+	cp = cherry-pick
+	st = status -s
+	cl = clone
+	ci = commit
+	co = checkout
+	br = branch
+	diff = diff --word-diff
+	dc = diff --cached
+	r = reset
+	r1 = reset HEAD^
+	r2 = reset HEAD^^
+	rh = reset --hard
+	rh1 = reset HEAD^ --hard
+	rh2 = reset HEAD^^ --hard
+    tagcommit = rev-list -n 1
+    mup = merge --ff-only upstream/master
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f

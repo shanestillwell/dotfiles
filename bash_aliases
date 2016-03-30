@@ -10,9 +10,17 @@ alias nr='npm run'
 
 # Docker
 alias dc='docker-compose'
-alias dcd='docker-compose -f ./dev.yml'
+alias dcrm='docker-compose rm -f'
+
+# Docker Machine
 alias dm='docker-machine'
 
-# Systems
-alias sshane='ssh shane@172.16.1.2' # iMac
+# Parallels
+alias plls='prlctl suspend '
+
+# Kubernetes
+alias integration='kube --kubeconfig=$HOME/.kube/kube-config.yaml'
+
+# Edit this file
+alias dfa='mvim ~/.dotfiles/bash_aliases'
 
