@@ -36,6 +36,17 @@
 ehthumbs.db
 Thumbs.db
 
+# Security Leaking #
+####################
+.key
+.cert
+.pem
+.p12
+.crt
+.csr
+.der
+.p7b
+
 # Nodejs Stuff #
 ################
 node_modules

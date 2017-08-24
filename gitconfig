@@ -1,6 +1,5 @@
 [user]
 	name = "Shane A. Stillwell"
-	email = "(none)"
 [core]
 	excludesfile = /Users/shane/.gitignore
 	editor = vim
@@ -9,6 +8,9 @@
 [alias]
 ; http://durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
 	alias = config --get-regexp alias
+    qemail = config user.email shane@quri.com
+    ssemail = config user.email shanestillwell@gmail.com
+    cara = commit --amend --reset-author
 	wow = log --all --graph --decorate --oneline --simplify-by-decoration
 	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
 	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
@@ -20,6 +22,7 @@
 	cl = clone
 	ci = commit
 	co = checkout
+	cm = checkout master
 	br = branch
 	diff = diff --word-diff
 	dc = diff --cached
@@ -31,6 +34,8 @@
 	rh2 = reset HEAD^^ --hard
     tagcommit = rev-list -n 1
     mup = merge --ff-only upstream/master
+    imm = config remote.upstream.pushurl "You do NOT want to be doing that"
+	wip = !"git add -A; git ls-files --deleted -z | xargs -0 git rm; git commit -m \"wip\""
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
