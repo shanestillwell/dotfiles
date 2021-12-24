@@ -1,0 +1,68 @@
+# Aliases
+alias vi="nvim"
+alias cim="nvim"
+alias vim="nvim"
+
+# Git
+alias gca='git commit -a '
+alias gpoh='git push origin head'
+alias gs='git status'
+
+# Autojump , j , z
+alias j='z'
+
+alias h='hugo'
+alias hs='hugo serve'
+alias hsd='hugo serve -D'
+
+# NPM
+alias nr='npm run'
+alias y='yarn'
+alias yr='yarn run'
+
+# Docker
+alias dps='docker ps'
+alias dstats='docker ps -q | xargs docker stats'
+alias dstopa='docker stop $(docker ps -q)'
+
+# Docker Machine
+alias dm='docker-machine'
+
+dmefunction() {
+    eval $(docker-machine env $1)
+}
+alias dme=dmefunction
+
+# Notes
+alias n='notes'
+alias ns='cd ~/notes && nvim `fzf --preview="cat {}" --preview-window=right:70%:wrap`'
+alias nv='cd ~/notes && nvim'
+
+# Edit this file
+alias dfa='nvim ~/.dotfiles/bash_aliases'
+alias resource='source ~/.dotfiles/bash_aliases'
+
+alias localip='sudo ifconfig lo0 alias 172.16.123.1'
+
+# Vim
+alias preview='nvim `fzf --preview="cat {}" --preview-window=right:70%:wrap`'
+
+# Trash
+alias rm='trash'
+
+# Hilton VPN
+alias hvpn='sudo ~/.sbin/hilton-vpn.sh'
+alias kvpn='sudo kill -s SIGINT $(pgrep openconnect)'
+alias vpnup='pgrep openconnect'
+
+# Node.js
+alias pkgscripts='cat package.json | jq ".scripts"'
+
+# TMUX
+alias tup='tmux-up t.conf'
+
+# Kubernetes
+alias kc='kubectl'
+alias kcstats='kubectl config current-context; echo ''; kubectl config view | grep namespace; echo ''; kubectl get namespace,node,ingress,pod,svc,job,cronjob,deployment,rs,pv,pvc,secret,ep -o wide'
+
+alias av='aws-vault exec'

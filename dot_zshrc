@@ -77,7 +77,7 @@ export GOPATH=$HOME/go
 # export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 
-source ~/.dotfiles/bash_aliases;
+source ~/.bash_aliases;
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
