@@ -1,0 +1,68 @@
+[user]
+	name = Shane A. Stillwell
+	useConfigOnly = true
+	email = shane@northernv.com
+[core]
+	excludesfile = /Users/shane/.gitignore
+	editor = nvim
+	autocrlf = input
+[push]
+	default = simple
+[alias]
+; http://durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
+	alias = config --get-regexp alias
+  ssemail = config user.email shanestillwell@gmail.com
+  nvemail = config user.email shane@northernv.com
+  hhemail = config user.email shane.stillwell.contractor@hilton.com
+  cara = commit --amend --reset-author
+	wow = log --all --graph --decorate --oneline --simplify-by-decoration
+	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+	fl = log -u
+	f = "!git ls-files | grep -i"
+	gr = grep -Ii
+	cp = cherry-pick
+	st = status -s
+	cl = clone
+	ci = commit
+	co = checkout
+	cm = checkout master
+	br = branch
+	diff = diff --word-diff
+	dc = diff --cached
+	r = reset
+	r1 = reset HEAD^
+	r2 = reset HEAD^^
+	rh = reset --hard
+	rh1 = reset HEAD^ --hard
+	rh2 = reset HEAD^^ --hard
+    tagcommit = rev-list -n 1
+    mup = merge --ff-only upstream/master
+    imm = config remote.upstream.pushurl "You do NOT want to be doing that"
+	cwip = !"git add -A; git ls-files --deleted -z | xargs -0 git rm; git commit -m \"wip\""
+	identity = "! git config commit.gpgsign true; git config user.email \"$(git config user.$1.email)\"; git config user.signingkey \"$(git config user.$1.signingkey)\"; :"
+  wip = for-each-ref --sort='authordate:iso8601' --format=' %(color:green)%(authordate:relative)%09%(color:white)%(refname:short)' refs/heads
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Users/shane/Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[credential]
+	helper = osxkeychain
+[commit]
+	template = /Users/shane/.stCommitMsg
+[user "gitlab"]
+	email = shane@northernv.com
+	signingkey = 0B4503DB11F64FEA
+[gpg]
+	program = gpg
+[user "hilton"]
+	email = shane.stillwell.contractor@hilton.com
+	signingkey = D8D7EF0AD016BF66
+[user "adl"]
+	email = shane.stillwell@allergan.com
+	signingkey = 3BE51B941DC1E325
