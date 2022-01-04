@@ -156,14 +156,4 @@ export DOCKER_BUILDKIT=1
 # GPG signing for git
 export GPG_TTY=$(tty)
 
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /Users/shane/Sites/adl/loyalty-backend/node_modules/serverless-step-functions/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/shane/Sites/adl/loyalty-backend/node_modules/serverless-step-functions/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /Users/shane/Sites/adl/loyalty-backend/node_modules/serverless-step-functions/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/shane/Sites/adl/loyalty-backend/node_modules/serverless-step-functions/node_modules/tabtab/.completions/sls.zsh
-# tabtab source for slss package
-# uninstall by removing these lines or running `tabtab uninstall slss`
-[[ -f /Users/shane/Sites/adl/loyalty-backend/node_modules/serverless-step-functions/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/shane/Sites/adl/loyalty-backend/node_modules/serverless-step-functions/node_modules/tabtab/.completions/slss.zsh
-
 ulimit -n 65536
