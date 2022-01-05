@@ -3,7 +3,7 @@
 	useConfigOnly = true
 	email = shane@northernv.com
 [core]
-	excludesfile = /Users/shane/.gitignore
+	excludesfile = {{ .chezmoi.homeDir }}/.gitignore
 	editor = nvim
 	autocrlf = input
 [push]
@@ -54,7 +54,7 @@
 [credential]
 	helper = osxkeychain
 [commit]
-	template = /Users/shane/.stCommitMsg
+	template = {{ .chezmoi.homeDir }}/.stCommitMsg
 [user "gitlab"]
 	email = shane@northernv.com
 	signingkey = 0B4503DB11F64FEA
