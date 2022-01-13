@@ -1,0 +1,8 @@
+{
+  "alfredsnippet" : {
+    "snippet" : "export $(cat .env | xargs)",
+    "uid" : "F037E54E-6983-4D09-8BBC-A19501F46299",
+    "name" : "Source .env file",
+    "keyword" : "srcenv"
+  }
+}

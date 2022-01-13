@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.dancrews.gh-labels</string>
+	<key>connections</key>
+	<dict>
+		<key>087F7D56-0308-40E2-91EA-02A2F430BA76</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>C3DDCEDD-E2D0-4DEB-B146-F5E78490F4F0</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>7746A06D-10DA-4C47-8254-489E217E6A51</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>C3DDCEDD-E2D0-4DEB-B146-F5E78490F4F0</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>C3DDCEDD-E2D0-4DEB-B146-F5E78490F4F0</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>D5452264-817D-4DF3-92A6-6D8A7957C823</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Dan Crews &lt;crewsd@gmail.com&gt;</string>
+	<key>description</key>
+	<string>Create Github Pull Request Labels</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Github PR Labels</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>7746A06D-10DA-4C47-8254-489E217E6A51</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<true/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>D5452264-817D-4DF3-92A6-6D8A7957C823</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>processing…</string>
+				<key>script</key>
+				<string>const content = "{query}".trim()
+const safeContent = encodeURIComponent(content).toLowerCase()
+const buildLink = (style) =&gt; {
+  return `https://gh-labels.dancrews.com/${style.toLowerCase()}/${safeContent}.svg`
+}
+
+const buildItem = ({ style, urlOnly }) =&gt; {
+  const type = urlOnly ? 'Icon' : 'Markdown'
+  const link = buildLink(style)
+  const altText = `${style}: ${content}`
+  const fullText = `![${altText}](${link})`
+  
+  const title = `${type}: ${altText}`
+  const arg = urlOnly ? link : fullText
+
+  return {
+    title,
+    arg,
+    icon: {
+      path: `images/${style.toLowerCase()}.png`
+    }
+  }
+}
+
+const items = [
+  buildItem({ style: 'Passing' }),
+  buildItem({ style: 'Optional' }),
+  buildItem({ style: 'Blocking' }),
+  buildItem({ style: 'Passing', urlOnly: true }),
+  buildItem({ style: 'Optional', urlOnly: true }),
+  buildItem({ style: 'Blocking', urlOnly: true }),
+]
+
+// console.log(JSON.stringify({ items }))
+
+JSON.stringify({ items })
+</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Button Text (JS)</string>
+				<key>type</key>
+				<integer>7</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>C3DDCEDD-E2D0-4DEB-B146-F5E78490F4F0</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>gh</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>Github Labels</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>087F7D56-0308-40E2-91EA-02A2F430BA76</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>On my pull request reviews, I have a color system. I do this so that I can more easily convey to you where a comment is on the scale of "FYI" to "Hard No". This allows me to provide insight and feedback without unnecessarily stopping progress.
+
+"Passing" (green with a check mark) means the comment is very non-blocking. On the scale, this goes from `FYI` to `keep going, but in a future change, could you please address this?`.
+
+"Optional" (blue with an info mark) means the comment is still non-blocking, but I have an opinion on why you might not want to merge it as-is. On the scale, this is `What if…` to `Are you sure you meant to do this? If you meant to, it's totally acceptable, but I'm not sure you meant to`.
+
+"Blocking" (red with an X mark) means the comment is blocking. On the scale, this goes from `Hey, let's talk about this before we move forward` to `AAAAAAHHHHHHHHHHHH!!!!!`.</string>
+	<key>uidata</key>
+	<dict>
+		<key>087F7D56-0308-40E2-91EA-02A2F430BA76</key>
+		<dict>
+			<key>xpos</key>
+			<integer>190</integer>
+			<key>ypos</key>
+			<integer>345</integer>
+		</dict>
+		<key>7746A06D-10DA-4C47-8254-489E217E6A51</key>
+		<dict>
+			<key>xpos</key>
+			<integer>195</integer>
+			<key>ypos</key>
+			<integer>195</integer>
+		</dict>
+		<key>C3DDCEDD-E2D0-4DEB-B146-F5E78490F4F0</key>
+		<dict>
+			<key>xpos</key>
+			<integer>410</integer>
+			<key>ypos</key>
+			<integer>270</integer>
+		</dict>
+		<key>D5452264-817D-4DF3-92A6-6D8A7957C823</key>
+		<dict>
+			<key>xpos</key>
+			<integer>620</integer>
+			<key>ypos</key>
+			<integer>270</integer>
+		</dict>
+	</dict>
+	<key>variablesdontexport</key>
+	<array/>
+	<key>version</key>
+	<string>1.0.0</string>
+	<key>webaddress</key>
+	<string>https://github.com/dncrews/github-label-builder</string>
+</dict>
+</plist>
