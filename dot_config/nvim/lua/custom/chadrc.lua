@@ -9,10 +9,12 @@ M.ui = {
   theme = "chadracula",
 }
 
-M.mappings = require "custom.mappings"
-M.plugins = {
-  user = require "custom.plugins"
+M.options = {
+  undofile = false,
 }
+
+M.mappings = require "custom.mappings"
+M.plugins = require "custom.plugins"
 
 -- Toggle the relative when entering insert mode
 vim.cmd([[
@@ -21,6 +23,14 @@ augroup numbertoggle
   autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
   autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
 augroup END
+]])
+
+vim.cmd([[
+  set isk+=-
+  set nobackup
+  set noswapfile
+  set noundofile
+  set undoreload=0
 ]])
 
 return M

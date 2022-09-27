@@ -14,8 +14,8 @@ M.general = {
      ["<leader>wl"] = { "<C-W>l", opts = { silent = true } },
    },
    v = {
-     ["<"] = { '<gv'},
-     [">"] = { ">gv"},
+     ["<"] = { '<gv', 'Move VISUAL selection left'},
+     [">"] = { ">gv", 'Move VISUAL selection right'},
    },
 }
 

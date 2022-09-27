@@ -18,6 +18,11 @@ local sources = {
    -- Lua
    b.formatting.stylua,
 
+   -- Jinja / Nunjucks
+   -- b.formatting.djlint,
+   -- b.formatting.djhtml,
+   -- b.diagnostics.curlylint,
+
    -- Shell
    b.formatting.shfmt,
    b.diagnostics.shellcheck.with { diagnostics_format = "#{m} [#{c}]" },

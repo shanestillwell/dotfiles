@@ -1,4 +1,14 @@
+local plugin_overrides = require("custom.plugins.override")
+
 return {
+  ["nvim-treesitter/nvim-treesitter"] = {
+    override_options = plugin_overrides.treesitter,
+  },
+  ["williamboman/mason.nvim"] = {
+    override_options = plugin_overrides.mason,
+  },
+  ["NvChad/nvterm"] = false,
+  ["tpope/vim-fugitive"] = {},
   ["neovim/nvim-lspconfig"] = {
     config = function()
       require "plugins.configs.lspconfig"

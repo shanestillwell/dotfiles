@@ -9,4 +9,3 @@ opt.noswapfile = true
 opt.spellang = 'en'
 g.spellfile = '/Users/shane/.vim/spell/en.utf-8.add'
 opt.encoding = 'UTF-8'
-opt.iskeyword = '@,48-57,_,-,192-255'
