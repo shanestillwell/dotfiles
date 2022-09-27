@@ -1,8 +1,0 @@
-{
-  "alfredsnippet" : {
-    "snippet" : "        variables () {\n          return {\n            input: { propertyId: this.$store.state.propertyId },\n          }\n        },\n",
-    "uid" : "AEA2B1A9-1C5C-4670-91AE-9E43AD02F559",
-    "name" : "Reactive",
-    "keyword" : "apollo"
-  }
-}
