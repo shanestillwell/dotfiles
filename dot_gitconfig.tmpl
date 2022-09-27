@@ -45,12 +45,6 @@
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Users/shane/Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
 [credential]
 	helper = osxkeychain
 [commit]
@@ -60,9 +54,3 @@
 	signingkey = 0B4503DB11F64FEA
 [gpg]
 	program = gpg
-[user "hilton"]
-	email = shane.stillwell.contractor@hilton.com
-	signingkey = D8D7EF0AD016BF66
-[user "adl"]
-	email = shane.stillwell@allergan.com
-	signingkey = 3BE51B941DC1E325
