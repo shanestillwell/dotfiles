@@ -1,6 +1,10 @@
 local plugin_overrides = require("custom.plugins.override")
+local cmpConfigs = require("custom.plugins.configs.cmp")
 
 return {
+  ["hrsh7th/nvim-cmp"] = {
+    override_options = cmpConfigs.cmp,
+  },
   ["nvim-treesitter/nvim-treesitter"] = {
     override_options = plugin_overrides.treesitter,
   },
@@ -31,8 +35,6 @@ return {
   ["tzachar/cmp-tabnine"] = {
     after = "nvim-cmp",
     run = "./install.sh",
-    config = function()
-      require "custom.plugins.configs.tabnine"
-    end,
+    config = cmpConfigs.tabnine
   },
 }
