@@ -157,3 +157,13 @@ export DOCKER_BUILDKIT=1
 export GPG_TTY=$(tty)
 
 ulimit -n 65536
+
+# machine-specific configuration
+{{- if eq .chezmoi.hostname "spmacpro103" }}
+alias python="$(pyenv which python)"
+alias pip="$(pyenv which pip)"
+
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+{{- end }}
