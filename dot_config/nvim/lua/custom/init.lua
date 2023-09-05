@@ -1,11 +1,7 @@
--- example file i.e lua/custom/init.lua
--- load your options globals, autocmds here or anything .__.
--- you can even override default options here (core/options.lua)
-local opt = vim.opt
-local g = vim.g
+-- local autocmd = vim.api.nvim_create_autocmd
 
-opt.relativenumber = true
-opt.noswapfile = true
-opt.spellang = 'en'
-g.spellfile = '/Users/shane/.vim/spell/en.utf-8.add'
-opt.encoding = 'UTF-8'
+-- Auto resize panes when resizing nvim window
+-- autocmd("VimResized", {
+--   pattern = "*",
+--   command = "tabdo wincmd =",
+-- })

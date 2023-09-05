@@ -1,20 +1,22 @@
--- Just an example, supposed to be placed in /lua/custom/
-
+---@type ChadrcConfig
 local M = {}
 
--- make sure you maintain the structure of `core/default_config.lua` here,
--- example of changing theme:
+-- Path to overriding theme and highlights files
+local highlights = require "custom.highlights"
 
 M.ui = {
   theme = "chadracula",
+  -- theme_toggle = { "onedark", "one_light" },
+
+  hl_override = highlights.override,
+  hl_add = highlights.add,
 }
 
-M.options = {
-  undofile = false,
-}
+M.plugins = "custom.plugins"
 
+-- check core.mappings for table structure
 M.mappings = require "custom.mappings"
-M.plugins = require "custom.plugins"
+
 
 -- Toggle the relative when entering insert mode
 vim.cmd([[
@@ -32,5 +34,9 @@ vim.cmd([[
   set noundofile
   set undoreload=0
 ]])
+
+-- Recommended to disable netrw by nvim-tree
+vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_netrw = 1
 
 return M
