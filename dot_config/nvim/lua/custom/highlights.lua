@@ -14,6 +14,8 @@ M.override = {
 ---@type HLTable
 M.add = {
   NvimTreeOpenedFolderName = { fg = "green", bold = true },
+  Search = { fg="black", bg="sun" },
+  CursorLine = { bg="one_bg" },
 }
 
 return M
