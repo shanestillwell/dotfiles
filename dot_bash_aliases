@@ -22,6 +22,7 @@ alias nr='npm run'
 alias y='yarn'
 alias yr='yarn run'
 alias ylf='yarn lint --fix'
+alias nn='pnpm'
 
 # Docker
 alias dps='docker ps'

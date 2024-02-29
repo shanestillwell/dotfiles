@@ -74,6 +74,8 @@ source $ZSH/oh-my-zsh.sh
 
 
 # Golang
+export GOROOT="$(brew --prefix golang)/libexec"
+export GOBIN=$GOPATH/bin
 export GOPATH=$HOME/go
 
 # FZF
@@ -137,6 +139,15 @@ export GPG_TTY=$(tty)
 ulimit -n 65536
 
 # machine-specific configuration
+
+# pnpm
+export PNPM_HOME="$HOME/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
 {{- if eq .chezmoi.hostname "spmacpro103" }}
 alias python="$(pyenv which python)"
 alias pip="$(pyenv which pip)"
