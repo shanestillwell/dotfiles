@@ -17,6 +17,11 @@ local sources = {
 
   -- cpp
   b.formatting.clang_format,
+
+  -- go
+  b.diagnostics.golangci_lint,
+  b.formatting.gofmt,
+  b.formatting.goimports,
 }
 
 null_ls.setup {

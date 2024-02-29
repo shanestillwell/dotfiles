@@ -30,6 +30,10 @@ M.treesitter = {
   },
 }
 
+M.trouble = {
+  auto_open = true,
+}
+
 M.mason = {
   ensure_installed = {
     -- lua stuff
@@ -49,6 +53,9 @@ M.mason = {
     -- c/cpp stuff
     "clangd",
     "clang-format",
+
+    -- go
+    "gopls",
   },
 }
 

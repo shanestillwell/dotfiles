@@ -25,6 +25,12 @@ local plugins = {
     end, -- Override to setup mason-lspconfig
   },
 
+  {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = overrides.trouble
+  },
+
   -- override plugin configs
   {
     "williamboman/mason.nvim",
@@ -75,6 +81,21 @@ local plugins = {
     end,
     build = "./dl_binaries.sh",
     run = "./dl_binaries.sh",
+  },
+
+  {
+    "ray-x/go.nvim",
+    dependencies = {  -- optional packages
+      "ray-x/guihua.lua",
+      "neovim/nvim-lspconfig",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function()
+      require("go").setup()
+    end,
+    event = {"CmdlineEnter"},
+    ft = {"go", 'gomod'},
+    build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
   },
 
   -- Install a plugin
