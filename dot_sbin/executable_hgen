@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cd /Users/shane/Sites/hilton;
+rm -fr ./dx-zz-ui;
+mkdir dx-zz-ui;
+cd dx-zz-ui;
+yo dx:ui --sample;

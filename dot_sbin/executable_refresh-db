@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e
+
+echo "Droping DB $1"
+PGPASSWORD=postgres dropdb -h localhost -U postgres $1 | true;
+
+echo "Creating DB $1"
+PGPASSWORD=postgres createdb -U postgres -h localhost $1;

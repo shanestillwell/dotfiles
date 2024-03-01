@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -e
+
+REMOTE=${1:-origin}
+BRANCH=${2:-master}
+
+git checkout $BRANCH;
+git pull $REMOTE $BRANCH;
+npm version patch;
+git push $REMOTE $BRANCH --tags;

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+set -e 
+
+psql postgres://postgres@localhost/postgres -c "create database test" &> /dev/null;

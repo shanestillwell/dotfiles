@@ -1,0 +1,4 @@
+#!/bin/bash
+
+docker ps --filter name=$1 -aq | xargs docker stop
+docker ps --filter name=$1 -aq | xargs docker rm 

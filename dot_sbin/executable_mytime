@@ -1,0 +1,3 @@
+#!/bin/bash
+
+node ~/Sites/nv/harvest/index --START=$1 --END=$2;
