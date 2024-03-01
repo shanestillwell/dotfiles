@@ -46,8 +46,6 @@
 	smudge = git-media-smudge %f
 [credential]
 	helper = osxkeychain
-[commit]
-	template = {{ .chezmoi.homeDir }}/.stCommitMsg
 [user "gitlab"]
 	email = {{ .email | quote }}
 	signingkey = 0B4503DB11F64FEA
@@ -55,3 +53,5 @@
 	program = gpg
 [pager]
   branch = false
+[init]
+	defaultBranch = main
