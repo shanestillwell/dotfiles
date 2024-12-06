@@ -1,3 +1,5 @@
 {{- $email := promptString "email" -}}
+{{- $ghToken := promptString "Homebrew Github API Token" -}}
 [data]
     email = "{{ $email }}"
+    brew_github_token = "{{ $ghToken }}"

@@ -128,7 +128,7 @@ export VISUAL='nvim'
 
 # if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
-export HOMEBREW_GITHUB_API_TOKEN="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"
+export HOMEBREW_GITHUB_API_TOKEN={{ .brew_github_token | quote }}
 
 # Gitlab NPM Token
 export CI_JOB_TOKEN="SoTQNjNfUznzwdXyrwcT"
