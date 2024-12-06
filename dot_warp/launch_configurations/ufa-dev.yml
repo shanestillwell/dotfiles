@@ -1,0 +1,18 @@
+# Warp Launch Configuration
+#
+# This configuration has two windows.
+# The first window executes two commands on start.
+# The second window has a split pane that executes a command on start.
+
+---
+name: UFA DEV
+windows:
+  - tabs:
+      - title: UFA DEV SSO
+        layout:
+          cwd: /Users/shane/Sites/crux/ufa-access
+          commands:
+            - exec: export AWS_REGION=us-east-1
+            - exec: export AWS_PROFILE=UFADEV
+            - exec: aws sso login --profile UFADEV && eval "$(aws configure export-credentials --profile UFADEV --format env)"
+        color: blue

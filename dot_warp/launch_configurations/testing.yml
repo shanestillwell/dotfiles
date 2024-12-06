@@ -1,0 +1,16 @@
+# Warp Launch Configuration
+#
+# This configuration has two windows.
+# The first window executes two commands on start.
+# The second window has a split pane that executes a command on start.
+
+---
+name: Testing CK
+windows:
+  - tabs:
+      - title: TESTING
+        layout:
+          cwd: /Users/shane/Sites/ck/api
+          commands:
+            - exec: export DATABASE_URL=postgres://postgres:12%2534@localhost/test?sslmode=disable LOG_LVL=silent NODE_ENV=test
+        color: green
