@@ -7,6 +7,15 @@ M.general = {
   },
   n = {
     -- [";"] = { ":", "enter command mode", opts = { nowait = true } },
+
+    --  format with conform
+    ["<leader>fm"] = {
+      function()
+        require("conform").format()
+      end,
+      "formatting",
+    },
+
     ["Q"] = { "<cmd> q! <CR>", opts = { silent = true } },
     ["<leader>s"] = { "1z=", opts = { silent = true } },
     ["<C-p>"] = { "<cmd> Telescope find_files <CR>", "find files" },

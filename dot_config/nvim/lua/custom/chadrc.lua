@@ -17,6 +17,9 @@ M.plugins = "custom.plugins"
 -- check core.mappings for table structure
 M.mappings = require "custom.mappings"
 
+-- Force folding
+vim.opt.foldlevel = 99
+vim.opt.foldmethod = "indent"
 
 -- Toggle the relative when entering insert mode
 vim.cmd([[
@@ -38,5 +41,14 @@ vim.cmd([[
 -- Recommended to disable netrw by nvim-tree
 vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_netrw = 1
+
+local format_sync_grp = vim.api.nvim_create_augroup("goimports", {})
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.go",
+  callback = function()
+   require('go.format').goimports()
+  end,
+  group = format_sync_grp,
+})
 
 return M
