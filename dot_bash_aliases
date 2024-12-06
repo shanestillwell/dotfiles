@@ -9,6 +9,7 @@ alias gpoh='git push origin head'
 alias gpohf='git push origin head --force'
 alias gs='git status'
 alias gbdd="git branch --merged | grep -v '^\*' | awk '{$1=$1};1' | egrep -v '^(master|main|dev|qa|prod)$' | xargs git branch -d"
+alias gbs="git for-each-ref --sort=-committerdate refs/heads/ --format='%(committerdate:short) %(refname:short)'" # short branches by last commit date
 
 # Autojump , j , z
 alias j='z'
@@ -33,7 +34,7 @@ alias dstopa='docker stop $(docker ps -q)'
 alias dm='docker-machine'
 
 dmefunction() {
-    eval $(docker-machine env $1)
+	eval $(docker-machine env $1)
 }
 alias dme=dmefunction
 
@@ -73,3 +74,9 @@ alias av='aws-vault exec'
 
 # delete-merged-branches
 alias dmb='git branch --merged | grep -v "^\*" | awk "{\$1=\$1};1" | egrep -v "^(master|main|dev|qa|prod)$" | xargs git branch -d'
+
+# eza
+alias e='eza -la'
+
+# Chezmoi
+alias chz="chezmoi"

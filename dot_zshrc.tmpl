@@ -1,7 +1,16 @@
 # Path to your oh-my-zsh installation.
 export ZSH={{ .chezmoi.homeDir }}/.oh-my-zsh
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+HISTSIZE=50000
+SAVEHIST=50000  # Make this equal to HISTSIZE
+
+setopt INC_APPEND_HISTORY    # Add commands to history as they are typed
+setopt HIST_IGNORE_ALL_DUPS  # Don't record duplicates
+setopt HIST_SAVE_NO_DUPS     # Don't write duplicate entries
+setopt SHARE_HISTORY         # Share history between sessions
+
+# 1Password integration
+export OP_BIOMETRIC_UNLOCK_ENABLED=true
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -53,14 +62,18 @@ ZSH_THEME="dracula"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git npm docker docker-compose yarn nvm)
 
 # User configuration
 ZSH_TMUX_AUTOCONNECT=false
 
-export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:./node_modules/.bin:$HOME/go/bin:$HOME/.sbin:$HOME/.cargo/bin"
-# export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
-# export MANPATH="/usr/local/man:$MANPATH"
+# Golang
+export GOROOT="$(brew --prefix golang)/libexec"
+export GOPATH=$HOME/go
+export GOBIN=$GOPATH/bin
+export GOPATH=$HOME/go
+
+export PATH="./node_modules/.bin:$HOME/.sbin:${GOPATH}/bin:${GOROOT}/bin:$PATH"
+plugins=(git npm docker docker-compose yarn)
 
 # Homebrew's autocompletion
 FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
@@ -75,11 +88,6 @@ source $ZSH/oh-my-zsh.sh
 . $(brew --prefix)/etc/profile.d/z.sh
 
 
-# Golang
-export GOROOT="$(brew --prefix golang)/libexec"
-export GOBIN=$GOPATH/bin
-export GOPATH=$HOME/go
-
 # FZF
 # export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
@@ -89,7 +97,7 @@ source ~/.bash_aliases;
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred 
+# Preferred
 # ditor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
@@ -150,11 +158,11 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-{{- if eq .chezmoi.hostname "spmacpro103" }}
-alias python="$(pyenv which python)"
-alias pip="$(pyenv which pip)"
 
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-{{- end }}
+# Remove history lock file if it exists and process is not running
+if [ -L "$HISTFILE.LOCK" ]; then
+    pid=$(readlink "$HISTFILE.LOCK" | cut -d/ -f2 | cut -d- -f2)
+    if ! kill -0 "$pid" 2>/dev/null; then
+        rm -f "$HISTFILE.LOCK"
+    fi
+fi

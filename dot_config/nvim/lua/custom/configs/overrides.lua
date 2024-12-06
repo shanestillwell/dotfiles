@@ -56,6 +56,10 @@ M.mason = {
 
     -- go
     "gopls",
+
+
+    -- general
+    "codespell",
   },
 }
 

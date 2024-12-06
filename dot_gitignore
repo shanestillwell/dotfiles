@@ -23,8 +23,11 @@
 # Logs and databases #
 ######################
 *.log
-*.sql
+# *.sql
 *.sqlite
+
+# Exception for sql files under db directory
+!db/*.sql
 
 # OS generated files #
 ######################
@@ -62,3 +65,14 @@ build/*
 
 # Local Netlify folder
 .netlify
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+*.tfvars
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
